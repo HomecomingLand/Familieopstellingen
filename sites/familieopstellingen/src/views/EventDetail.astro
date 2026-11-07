@@ -1,4 +1,5 @@
 ---
+import { parsePrice } from '../lib/pricing';
 import Base from '../layouts/Base.astro';
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -25,7 +26,7 @@ const dateStr = d.endDate ? `${formatDate(d.date, locale)} – ${formatDate(d.en
           <div><dt class="eyebrow">{locale === 'nl' ? 'Datum' : 'Date'}</dt><dd><time datetime={d.date.toISOString().slice(0,10)}>{dateStr}</time></dd></div>
           {(d.start || d.end) && <div><dt class="eyebrow">{tr('agenda.time')}</dt><dd>{d.start}{d.end ? ` – ${d.end}` : ''}{d.arrival ? ` (${tr('agenda.arrival').toLowerCase()} ${d.arrival})` : ''}</dd></div>}
           <div><dt class="eyebrow">{tr('agenda.where')}</dt><dd><a href={route('locatie', locale)}>{d.location}</a></dd></div>
-          {d.price && <div><dt class="eyebrow">{tr('agenda.price')}</dt><dd>{d.price}</dd></div>}
+          {d.price && <div><dt class="eyebrow">{tr('agenda.price')}</dt><dd>{d.price}{parsePrice(d.price) !== null && <span class="small muted" style="display:block">{tr('price.note')}</span>}</dd></div>}
           {d.spots && <div><dt class="eyebrow">{locale === 'nl' ? 'Groep' : 'Group'}</dt><dd>{tr('agenda.spots', { n: d.spots })}</dd></div>}
           <div><dt class="eyebrow">Status</dt><dd>{tr(statusKey)}</dd></div>
         </dl>

@@ -4,6 +4,7 @@ import PageIntro from '@opstellingen/shared/components/PageIntro.astro';
 import { getCollection } from 'astro:content';
 import { site } from '../site.config';
 import { t, route, formatDate, type Locale } from '../i18n';
+import { parsePrice } from '../lib/pricing';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const tr = t(locale);
@@ -28,15 +29,36 @@ const copy = {
           <div class="field"><label for="naam">{tr('form.name')} *</label><input id="naam" name="naam" type="text" required autocomplete="name" /></div>
           <div class="field"><label for="email">{tr('form.email')} *</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
         </div>
+        <fieldset class="field fieldset">
+          <legend>{tr('form.customer')} *</legend>
+          <label class="radio"><input type="radio" name="klanttype" value="particulier" checked data-customer /> {tr('form.customer.particulier')}</label>
+          <label class="radio"><input type="radio" name="klanttype" value="bedrijf" data-customer /> {tr('form.customer.bedrijf')}</label>
+        </fieldset>
+        <div class="company" data-company hidden>
+          <div class="grid grid--2">
+            <div class="field"><label for="bedrijf">{tr('form.company')} *</label><input id="bedrijf" name="bedrijfsnaam" type="text" autocomplete="organization" data-company-req /></div>
+            <div class="field"><label for="btwnr">{tr('form.vatnr')} *</label><input id="btwnr" name="btw-nummer" type="text" placeholder="BE 0123.456.789" pattern="^\s*[A-Za-z]{2}[\s.0-9A-Za-z]{8,16}\s*$" data-company-req /></div>
+          </div>
+          <div class="field"><label for="straat">{tr('form.street')} *</label><input id="straat" name="straat" type="text" autocomplete="street-address" data-company-req /></div>
+          <div class="grid grid--3">
+            <div class="field"><label for="postcode">{tr('form.postal')} *</label><input id="postcode" name="postcode" type="text" autocomplete="postal-code" data-company-req /></div>
+            <div class="field"><label for="gemeente">{tr('form.city')} *</label><input id="gemeente" name="gemeente" type="text" autocomplete="address-level2" data-company-req /></div>
+            <div class="field"><label for="land">{tr('form.country')} *</label><input id="land" name="land" type="text" autocomplete="country-name" value={locale === 'nl' ? 'België' : 'Belgium'} data-company-req /></div>
+          </div>
+        </div>
         <div class="field"><label for="telefoon">{tr('form.phone')}</label><input id="telefoon" name="telefoon" type="tel" autocomplete="tel" /></div>
         <div class="field">
           <label for="event">{tr('form.event')} *</label>
           <select id="event" name="datum" required data-event-select>
-            {events.map((e) => (<option value={e.data.key}>{formatDate(e.data.date, locale, { day: 'numeric', month: 'long', year: 'numeric' })} — {e.data.title}</option>))}
+            {events.map((e) => (<option value={e.data.key} data-price={parsePrice(e.data.price) ?? ''}>{formatDate(e.data.date, locale, { day: 'numeric', month: 'long', year: 'numeric' })} — {e.data.title}</option>))}
             <option value="prive">{tr('form.event.prive')}</option>
             <option value="anders">{tr('form.event.other')}</option>
           </select>
         </div>
+        <div class="total" data-total aria-live="polite" hidden></div>
+        <input type="hidden" name="bedrag-excl-btw" data-out-net />
+        <input type="hidden" name="btw" data-out-vat />
+        <input type="hidden" name="te-betalen" data-out-total />
         <fieldset class="field fieldset">
           <legend>{tr('form.role')}</legend>
           <label class="radio"><input type="radio" name="rol" value="vraagsteller" /> {tr('form.role.vraagsteller')}</label>
@@ -57,10 +79,39 @@ const copy = {
   .fieldset legend { font-size: var(--text-small); font-weight: 500; margin-bottom: 0.5rem; }
   .radio { display: flex; gap: 0.7em; align-items: start; padding: 0.3rem 0; font-size: var(--text-small); }
   .radio input { margin-top: 0.3em; }
+  .company { display: grid; gap: 1.4rem; }
+  .company[hidden] { display: none; }
+  .grid--3 { display: grid; gap: 1.4rem; grid-template-columns: 1fr 2fr 1.4fr; }
+  @media (max-width: 640px) { .grid--3 { grid-template-columns: 1fr; } }
+  .total { border-top: 1px solid currentColor; border-bottom: 1px solid currentColor; padding: 0.9rem 0; font-size: var(--text-small); }
+  .total strong { font-size: 1.15em; }
 </style>
-<script>
-  // Preselect the event when arriving from an event page (?event=key).
+<script define:vars={{ rate: site.vatRate, locale, L: { total: tr('form.total'), incl: tr('form.total.incl'), excl: tr('form.total.excl'), vat: tr('form.total.vat') } }}>
+  // Private persons pay the listed price incl. VAT; companies pay listed price + VAT. Keep in sync with src/lib/pricing.ts.
+  const sel = document.querySelector('[data-event-select]');
   const key = new URLSearchParams(location.search).get('event');
-  const sel = document.querySelector<HTMLSelectElement>('[data-event-select]');
   if (key && sel && [...sel.options].some((o) => o.value === key)) sel.value = key;
+  const box = document.querySelector('[data-total]');
+  const company = document.querySelector('[data-company]');
+  const fmt = new Intl.NumberFormat(locale === 'nl' ? 'nl-BE' : 'en-IE', { style: 'currency', currency: 'EUR' });
+  const r = (n) => Math.round(n * 100) / 100;
+  const out = (sel_, v) => { document.querySelector(sel_).value = v === '' ? '' : v.toFixed(2); };
+  function update() {
+    const isCo = document.querySelector('[data-customer]:checked')?.value === 'bedrijf';
+    company.hidden = !isCo;
+    company.querySelectorAll('[data-company-req]').forEach((i) => { i.required = isCo; });
+    const base = Number(sel.selectedOptions[0]?.dataset.price || NaN);
+    if (!Number.isFinite(base)) { box.hidden = true; ['[data-out-net]','[data-out-vat]','[data-out-total]'].forEach((s) => out(s, '')); return; }
+    let net, vat, total;
+    if (isCo) { net = r(base); vat = r(base * rate); total = r(net + vat); }
+    else { total = r(base); net = r(base / (1 + rate)); vat = r(total - net); }
+    out('[data-out-net]', net); out('[data-out-vat]', vat); out('[data-out-total]', total);
+    box.innerHTML = isCo
+      ? `${L.total}: ${fmt.format(net)} ${L.excl} + ${fmt.format(vat)} ${L.vat} = <strong>${fmt.format(total)}</strong>`
+      : `${L.total}: <strong>${fmt.format(total)}</strong> (${L.incl})`;
+    box.hidden = false;
+  }
+  sel.addEventListener('change', update);
+  document.querySelectorAll('[data-customer]').forEach((i) => i.addEventListener('change', update));
+  update();
 </script>

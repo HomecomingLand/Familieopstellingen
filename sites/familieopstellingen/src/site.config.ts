@@ -32,6 +32,8 @@ export const site = {
   /** OpenStreetMap embed (cookie-free). Coordinates are approximate for the Bredabaan in Brasschaat. */
   mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=4.47%2C51.325%2C4.53%2C51.355&layer=mapnik&marker=51.340%2C4.500',
   vat: 'BE 0469.998.256',
+  /** VAT rate. Private persons pay listed prices incl. VAT; companies pay listed price + this VAT (see src/lib/pricing.ts). */
+  vatRate: 0.21,
   /**
    * Where the registration/contact forms post to.
    * Leave empty to use Netlify Forms (works automatically when deployed on Netlify).
