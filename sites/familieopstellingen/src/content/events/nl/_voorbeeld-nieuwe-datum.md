@@ -9,7 +9,7 @@ start: "10:00"
 end: "17:00"
 location: "Homecoming Land, Bredabaan 1251, 2930 Brasschaat"
 price: "€ 120"
-spots: 18
+spots: 20
 status: open
 summary: "Korte samenvatting van deze dag in één of twee zinnen. Deze tekst verschijnt op de kaartjes in de agenda."
 draft: true

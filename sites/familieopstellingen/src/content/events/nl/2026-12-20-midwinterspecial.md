@@ -9,7 +9,7 @@ start: "14:00"
 end: "21:00"
 location: "Homecoming Land, Bredabaan 1251, 2930 Brasschaat"
 price: "€ 120"
-spots: 18
+spots: 20
 status: open
 image: /images/event-midwinter-vuur.jpg
 summary: "Een opstellingsdag rond de donkerste dag van het jaar: we kijken het donker én het licht in onszelf liefdevol in de ogen. Met verwarmende dranken, snacks en een zelfgemaakte warme biologische maaltijd."
@@ -20,7 +20,7 @@ Je wordt vrijblijvend uitgenodigd om je op voorhand te verbinden met het donkers
 
 **Hoe de dag verloopt**
 
-Je bent welkom vanaf 13.30u. We starten om 14u en eindigen rond 21u. Tijdens de dag kijken we welke opstellingen aan bod dienen te komen. We zijn met maximum 18 deelnemers en stellen ongeveer een handvol vragen op.
+Je bent welkom vanaf 13.30u. We starten om 14u en eindigen rond 21u. Tijdens de dag kijken we welke opstellingen aan bod dienen te komen. We zijn met maximum 20 deelnemers en stellen ongeveer een handvol vragen op.
 
 Er wordt 'blind' opgesteld: representanten worden zonder kennis van wie of wat ze representeren in het veld uitgenodigd. Niemand van de deelnemers krijgt, zonder toestemming van de vraagsteller, de vraag of details te horen.
 
