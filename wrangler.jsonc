@@ -1,0 +1,12 @@
+// Cloudflare Workers deploy config (static site, no server code).
+// Build: `npm run build` at the repo root -> output in sites/familieopstellingen/dist.
+// "name" must match the Worker's name in the Cloudflare dashboard.
+{
+  "name": "familieopstellingen",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./sites/familieopstellingen/dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

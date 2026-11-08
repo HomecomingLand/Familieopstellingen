@@ -61,9 +61,9 @@ Static output, any host works. Per site, point the host at the site folder:
 - **Netlify**: base directory `sites/familieopstellingen`, build `npm run build`, publish `dist`.
   Forms work out of the box.
 - **Vercel**: root directory `sites/familieopstellingen`, framework Astro.
-- **Cloudflare Pages**: root directory empty (repo root, so the shared workspace package installs),
-  framework preset None, build `npm run build`, output `sites/familieopstellingen/dist`. Node version comes from `.nvmrc`.
-  Forms need `formEndpoint` in `src/site.config.ts` (Netlify Forms does not exist on Cloudflare).
+- **Cloudflare (Workers)**: connect the repo, build command `npm run build`, deploy command `npx wrangler deploy`,
+  root directory empty. `wrangler.jsonc` points Cloudflare at `sites/familieopstellingen/dist`; its `name` must match
+  the Worker name in the dashboard. Forms need `formEndpoint` in `src/site.config.ts` (Netlify Forms does not exist there).
 
 Set `site` in `astro.config.mjs` to the real domain before the first production deploy
 (canonical URLs, hreflang and social images depend on it).
