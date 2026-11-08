@@ -1,0 +1,388 @@
+---
+/**
+ * Hidden brand page (/brand/): not in the menu, not indexed.
+ * Built only with /brand/brand.css so it shows exactly what that stylesheet gives
+ * anyone making social media posts, documents, slides or a next website.
+ * Source of truth: docs/brand/merkgids-familieopstellingen.pdf
+ */
+import { site } from '../../site.config';
+
+const colours = [
+  { name: 'Paper', hex: '#f7f3ef', use: 'Achtergrond van elke pagina. Nooit zuiver wit als basis.' },
+  { name: 'Wit', hex: '#ffffff', use: 'Formuliervelden, afwisselende blokken.' },
+  { name: 'Sand', hex: '#b69984', use: 'Hoofdkleur. Grote vlakken, voettekst, kaders.' },
+  { name: 'Sand 25', hex: '#ede5e0', use: 'Zachte banden tussen secties.' },
+  { name: 'Sand 50', hex: '#dacbbf', use: 'Lijnen op zand.' },
+  { name: 'Clay', hex: '#a26d57', use: 'Accent: knoppen, links bij hover. Spaarzaam.' },
+  { name: 'Moss', hex: '#549183', use: 'Heel klein accent: focusring, één markering.' },
+  { name: 'Ink', hex: '#141210', use: 'Tekst. Geen zuiver zwart.' },
+  { name: 'Ink soft', hex: '#5e5752', use: 'Bijschriften, tweede tekstniveau.' },
+  { name: 'Line', hex: '#e6ddd6', use: 'Haarlijnen.' },
+];
+const photos = [
+  { src: '/images/jessica-bospad.jpg', cap: 'Natuurlijk licht, ochtend of avond.' },
+  { src: '/images/banner-tuin-mist.jpg', cap: 'Mist, stilte, de plek zelf.' },
+  { src: '/images/prive-handen.jpg', cap: 'Mensen in sessie, zonder gezichten van deelnemers.' },
+  { src: '/images/collage-vuur.jpg', cap: 'Details: vuur, water, schors, hout.' },
+];
+const tone = [
+  ['Voel je dat er in je leven dingen gebeuren die je niet kunt verklaren?', 'Ontdek de kracht van systemisch werk!'],
+  ['In alle veiligheid op weg naar inzicht en heling.', 'Transformeer je leven in één dag.'],
+  ['Wees welkom.', 'Schrijf je nu in, de plaatsen zijn beperkt!!'],
+  ['Groepen variëren tussen de 12 en 20 deelnemers.', 'Exclusieve kleine groepen voor maximale impact.'],
+];
+const a = site.address;
+// Email signature with inline styles only, so it survives Gmail / Outlook / Apple Mail.
+const signature = `<table cellpadding="0" cellspacing="0" style="font-family:Jost,Futura,'Century Gothic',Arial,sans-serif;color:#141210;font-size:14px;line-height:1.5">
+<tr><td style="font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;letter-spacing:0.22em;text-transform:uppercase;padding-bottom:6px">Familieopstellingen</td></tr>
+<tr><td><strong>${site.person}</strong> · systemisch coach en holistisch therapeut</td></tr>
+<tr><td>${a.venue} · ${a.street} · ${a.postal} ${a.city}</td></tr>
+<tr><td style="color:#5e5752"><a href="mailto:${site.email}" style="color:#5e5752;text-decoration:none">${site.email}</a> · <a href="${site.phoneHref}" style="color:#5e5752;text-decoration:none">${site.phone}</a></td></tr>
+</table>`;
+---
+<!doctype html>
+<html lang="nl-BE" class="brand">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Merkgids · Familieopstellingen</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/brand/brand.css" />
+  </head>
+  <body>
+    <header class="cover">
+      <img class="brand-photo cover__img" src="/images/jessica-bospad.jpg" alt="Bospad op Homecoming Land in het ochtendlicht" />
+      <div class="wrap cover__text">
+        <p class="brand-label">Merkgids · Embrace Evolve</p>
+        <h1 class="brand-title brand-title--xl brand-rule">Familieopstellingen<br />door Jessica Abicht</h1>
+        <p>Kleuren, lettertypes, elementen, fotografie en toon. Voor de website, social media, documenten en wat er nog komt.</p>
+        <dl class="meta">
+          <div><dt class="brand-label">Versie</dt><dd>1.0 · november 2026</dd></div>
+          <div><dt class="brand-label">Downloads</dt><dd><a href="/brand/merkgids-familieopstellingen.pdf">Merkgids (PDF)</a> · <a href="/brand/brand.css">brand.css</a></dd></div>
+          <div><dt class="brand-label">Referentie</dt><dd>tifawine.ma</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <nav class="wrap toc brand-small" aria-label="Inhoud">
+      <a href="#verhaal">Merkverhaal</a><a href="#kleuren">Kleuren</a><a href="#typografie">Typografie</a><a href="#elementen">Elementen</a><a href="#fotografie">Fotografie</a><a href="#toon">Toon</a><a href="#social">Social media</a><a href="#documenten">Documenten</a><a href="#handtekening">E-mailhandtekening</a><a href="#css">brand.css</a>
+    </nav>
+
+    <section id="verhaal" class="section brand-band">
+      <div class="wrap split">
+        <div>
+          <h2 class="brand-title brand-title--xl brand-rule">Merkverhaal</h2>
+          <p class="brand-wordmark">Familieopstellingen</p>
+          <p class="brand-small">Woordmerk: Cormorant Garamond, hoofdletters, letterafstand 0.22em. Er is nog geen beeldmerk.</p>
+        </div>
+        <div class="story">
+          <h3 class="brand-title">Wat we doen.</h3>
+          <p>Familieopstellingen in groep en privé, op Homecoming Land in Brasschaat. Begeleid door Jessica Abicht, holistisch therapeut en systemisch coach met meer dan 30 jaar ervaring.</p>
+          <h3 class="brand-title">Waar we voor staan.</h3>
+          <p>Omarm wat is. Ontwikkel wie je bent. Duurzame verandering begint niet met jezelf verbeteren, maar met jezelf ontmoeten. Een opstelling maakt zichtbaar wat onder de oppervlakte speelt, zodat er ruimte ontstaat om met nieuwe ogen te kijken.</p>
+          <h3 class="brand-title">Belofte.</h3>
+          <p>Doorbreek patronen en creëer balans, in alle veiligheid.</p>
+          <h3 class="brand-title">Hoe het voelt.</h3>
+          <p>Thuiskomen. Warm en helder tegelijk. Diepgang zonder zwaarte, stilte zonder kilte. De plek doet mee: bomen, mist, vuur, een warme maaltijd.</p>
+          <h3 class="brand-title">Voor wie.</h3>
+          <p>Volwassenen die merken dat ze tegen hetzelfde blijven aanlopen en bereid zijn om te voelen. Geen voorkennis nodig.</p>
+          <h3 class="brand-title">Drie woorden.</h3>
+          <p>Warm. Helder. Nuchter.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kleuren" class="section">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">Kleuren</h2>
+        <p class="brand-small">Klik op een kleur om de hexcode te kopiëren.</p>
+        <ul class="swatches">
+          {colours.map((c) => (
+            <li>
+              <button class="swatch" type="button" data-copy={c.hex} style={`background:${c.hex}`} aria-label={`Kopieer ${c.name} ${c.hex}`}></button>
+              <p><strong>{c.name}</strong> <span class="hex">{c.hex}</span></p>
+              <p class="brand-small">{c.use}</p>
+            </li>
+          ))}
+        </ul>
+        <p>Verhouding op een pagina: paper en wit ongeveer 70 %, zandtinten 20 %, tekst in ink, clay alleen voor knoppen en links, moss bijna nooit. Geen verlopen, geen schaduwen. Tekst staat altijd in ink of ink soft, nooit in een kleur.</p>
+      </div>
+    </section>
+
+    <section id="typografie" class="section brand-band">
+      <div class="wrap split">
+        <div>
+          <h2 class="brand-title brand-title--xl brand-rule">Typografie</h2>
+          <p class="brand-label">Titels · Cormorant Garamond 500</p>
+          <p class="brand-title brand-title--xl">Doorbreek patronen &amp; creëer balans</p>
+          <p class="brand-small">Web 36 tot 52 px, print 20 tot 36 pt. Regelafstand 1.1, letterafstand 0.02em. Nooit vet, nooit in kleur.</p>
+          <p class="brand-label">Woordmerk</p>
+          <p class="brand-wordmark wordmark-big">Familieopstellingen</p>
+        </div>
+        <div>
+          <p class="brand-label">Lopende tekst · Jost 400</p>
+          <p>Zonder dat we ons er bewust van zijn, worden we een groot deel van ons leven gedreven door dynamieken die vaak niet van onszelf zijn.</p>
+          <p class="brand-small">Web 17 px, print 10 tot 11 pt. Regelafstand 1.55. Maximaal 44 rem of 150 mm breed.</p>
+          <p class="brand-label">Labels · Jost 600, hoofdletters, 0.14em</p>
+          <p class="brand-label">Afhankelijk van jouw behoefte</p>
+          <p class="brand-small">Beide lettertypes staan op Google Fonts: <a href="https://fonts.google.com/specimen/Cormorant+Garamond">Cormorant Garamond</a> en <a href="https://fonts.google.com/specimen/Jost">Jost</a>. Jost vervangt Futura. Geen derde lettertype.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="elementen" class="section">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">Elementen</h2>
+        <div class="grid3">
+          <div>
+            <p class="brand-label">Knoppen</p>
+            <p><a class="brand-btn" href="#elementen">Bekijk beschikbare data</a></p>
+            <p><a class="brand-btn brand-btn--solid" href="#elementen">Inschrijven</a></p>
+            <p><a class="brand-link" href="#elementen">Ontdek</a></p>
+            <p class="brand-small">Rechthoekig, kader van 0.3 mm, hoofdletters. Gevuld in clay voor de ene hoofdactie per pagina.</p>
+          </div>
+          <div>
+            <p class="brand-label">Titel met haarlijn</p>
+            <p class="brand-title brand-title--sm brand-rule">Over Jessica</p>
+            <p class="brand-small">Lijn van 14 mm, in ink. Gecentreerd met een label erboven voor grote secties.</p>
+          </div>
+          <div>
+            <p class="brand-label">Vorm en ruimte</p>
+            <p class="brand-small">Geen afgeronde hoeken. Dunne kaders. Foto's strak gesneden in 4:3, 3:4 of 21:9. Veel witruimte: liever één element minder dan één te veel.</p>
+            <blockquote class="brand-quote">“Ik voelde me vanaf het begin veilig en gedragen.”<cite>— Els (41), HR manager</cite></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fotografie" class="section brand-band">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">Fotografie</h2>
+        <div class="photos">
+          {photos.map((p) => (<figure><img class="brand-photo brand-photo--4x3" src={p.src} alt="" loading="lazy" /><figcaption class="brand-caption">{p.cap}</figcaption></figure>))}
+        </div>
+        <div class="split dodont">
+          <div>
+            <p class="brand-label">Wel</p>
+            <ul><li>Eigen foto's van Homecoming Land en van de praktijk</li><li>Natuurlijk licht, mist, bos, vuur, water, schors</li><li>Warme, zachte tonen; het beeld mag de pagina dragen</li><li>Mensen van achter, van opzij of in detail (handen)</li></ul>
+          </div>
+          <div>
+            <p class="brand-label">Niet</p>
+            <ul><li>Stockfoto's en symbolische beelden (stenen op elkaar, lotus)</li><li>Filters, zware bewerking, harde flits</li><li>Gezichten van deelnemers zonder toestemming</li><li>Tekst over foto's, behalve in de hero en de afsluitende oproep</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="toon" class="section">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">Toon</h2>
+        <p>Warm, helder en nuchter. We spreken de lezer aan met <em>je</em>. Korte zinnen. Eerst wat de lezer voelt, dan wat wij doen. Geen beloftes die we niet kunnen waarmaken, geen vakjargon zonder uitleg.</p>
+        <table class="tone">
+          <thead><tr><th class="brand-label">Zo wel</th><th class="brand-label">Zo niet</th></tr></thead>
+          <tbody>{tone.map(([y, n]) => (<tr><td>{y}</td><td>{n}</td></tr>))}</tbody>
+        </table>
+        <p class="brand-small">Vaste woorden: opstelling, vraagsteller, representant, toeschouwer, Homecoming Land, Embrace Evolve. Engels alleen op de Engelse pagina's; daar dezelfde toon.</p>
+      </div>
+    </section>
+
+    <section id="social" class="section brand-band">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">Social media</h2>
+        <p>Achtergrond paper of een eigen foto. Eén titel in Cormorant, één zin in Jost. Geen kaders om foto's, geen stickers. Clay alleen voor één woord of een knop. Hieronder drie voorbeelden om na te maken in Canva of een ander programma.</p>
+        <div class="posts">
+          <figure>
+            <div class="post post--paper">
+              <p class="brand-label">Afhankelijk van jouw behoefte</p>
+              <p class="brand-title post__title brand-rule brand-rule--center">Doorbreek patronen &amp; creëer balans</p>
+              <p class="post__line">Familieopstellingen op Homecoming Land</p>
+              <p class="brand-wordmark post__mark">Familieopstellingen</p>
+            </div>
+            <figcaption class="brand-caption">Post 1:1 (1080 × 1080) · tekst op paper</figcaption>
+          </figure>
+          <figure>
+            <div class="post post--photo">
+              <img class="brand-photo" src="/images/event-midwinter-vuur.jpg" alt="" loading="lazy" />
+              <div class="post__strip">
+                <p class="brand-label">Zondag 20 december</p>
+                <p class="brand-title post__title--sm">Midwinterspecial</p>
+              </div>
+            </div>
+            <figcaption class="brand-caption">Post 1:1 · eigen foto, tekst in een band eronder</figcaption>
+          </figure>
+          <figure>
+            <div class="post post--story">
+              <img class="brand-photo post__story-img" src="/images/groep-kring-bos.jpg" alt="" loading="lazy" />
+              <div class="post__story-text">
+                <p class="brand-title post__title--sm">Wees welkom.</p>
+                <p class="post__line">Opstellingen in groep, max. 20 deelnemers.</p>
+                <span class="brand-btn brand-btn--solid">Inschrijven</span>
+              </div>
+            </div>
+            <figcaption class="brand-caption">Story 9:16 (1080 × 1920) · foto boven, één knop in clay</figcaption>
+          </figure>
+        </div>
+        <dl class="specs brand-small">
+          <div><dt class="brand-label">Formaten</dt><dd>Post 1080 × 1080 of 1080 × 1350 · Story 1080 × 1920</dd></div>
+          <div><dt class="brand-label">Marges</dt><dd>Minstens 80 px rondom, tekst gecentreerd of links</dd></div>
+          <div><dt class="brand-label">Titel</dt><dd>Cormorant Garamond 500, 64 tot 96 px · één zin Jost 400, 32 tot 40 px</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="documenten" class="section">
+      <div class="wrap split">
+        <div>
+          <h2 class="brand-title brand-title--xl brand-rule">Documenten en mails</h2>
+          <p>Tekst in Jost 10 tot 11 pt, titels in Cormorant. Haarlijn onder de titel. Kleur enkel in de knop of de link.</p>
+          <dl class="specs brand-small">
+            <div><dt class="brand-label">Pagina</dt><dd>A4, marges 20 mm, achtergrond wit of paper</dd></div>
+            <div><dt class="brand-label">Kop</dt><dd>Woordmerk links boven, 11 pt, letterafstand 0.22em</dd></div>
+            <div><dt class="brand-label">Titel</dt><dd>Cormorant Garamond 500, 24 tot 28 pt, haarlijn 14 mm</dd></div>
+            <div><dt class="brand-label">Tekst</dt><dd>Jost 400, 10,5 pt, regelafstand 1.55</dd></div>
+            <div><dt class="brand-label">Voet</dt><dd>Adres en contact in ink soft, 8 pt</dd></div>
+          </dl>
+          <p class="brand-label">Presentaties</p>
+          <p class="brand-small">Paper als dia-achtergrond, foto's paginavullend. Maximaal twee lettergroottes per dia.</p>
+          <p class="brand-label">Volgende website</p>
+          <p class="brand-small">Zelfde basis, eigen thema: andere kleuren en lettertypes mogen, de rust en de witruimte blijven.</p>
+        </div>
+        <figure>
+          <div class="a4">
+            <p class="brand-wordmark a4__mark">Familieopstellingen</p>
+            <p class="brand-title a4__title brand-rule">Bevestiging van je inschrijving</p>
+            <p>Dag Els,</p>
+            <p>Fijn dat je erbij bent op zondag 20 december. Je bent welkom vanaf 13.30 uur op Homecoming Land. We starten om 14 uur en eindigen rond 21 uur.</p>
+            <p>Je hoeft niets voor te bereiden. Wil je je toch al verbinden met een vraag, dan kan dat.</p>
+            <p>Warme groet,<br />Jessica</p>
+            <p class="a4__foot">{site.person} · {a.venue} · {a.street} · {a.postal} {a.city} · {site.email} · {site.phone} · BTW {site.vat}</p>
+          </div>
+          <figcaption class="brand-caption">Voorbeeld van een brief of mail op A4.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="handtekening" class="section brand-band">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">E-mailhandtekening</h2>
+        <div class="brand-card sig" set:html={signature} data-signature></div>
+        <p class="actions"><button class="brand-btn brand-btn--solid" type="button" data-copy-signature>Kopieer handtekening</button> <span class="brand-small" data-sig-status aria-live="polite"></span></p>
+        <p class="brand-small">Klik op de knop en plak (Cmd/Ctrl + V) in de handtekening-instellingen van Gmail, Outlook of Apple Mail.</p>
+      </div>
+    </section>
+
+    <section id="css" class="section">
+      <div class="wrap">
+        <h2 class="brand-title brand-title--xl brand-rule">brand.css</h2>
+        <p>Eén stijlblad met dezelfde kleuren en lettertypes, voor elke webpagina, nieuwsbrief of nieuwe website. Voeg deze regel toe in de <code>&lt;head&gt;</code> en zet <code>class="brand"</code> op de pagina:</p>
+        <pre class="code"><code>&lt;link rel="stylesheet" href="<span data-origin>https://familieopstellingen.gertembrechts.workers.dev</span>/brand/brand.css"&gt;</code></pre>
+        <p class="brand-small">Klassen: <code>brand-title</code>, <code>brand-title--xl</code>, <code>brand-rule</code>, <code>brand-wordmark</code>, <code>brand-label</code>, <code>brand-btn</code>, <code>brand-btn--solid</code>, <code>brand-link</code>, <code>brand-quote</code>, <code>brand-band</code>, <code>brand-card</code>, <code>brand-photo--4x3</code>. Kleuren als variabelen, bv. <code>var(--brand-clay)</code>.</p>
+        <p><a class="brand-btn" href="/brand/brand.css" download>Download brand.css</a> <a class="brand-btn" href="/brand/merkgids-familieopstellingen.pdf" download>Download merkgids (PDF)</a></p>
+      </div>
+    </section>
+
+    <footer class="brand-sand foot">
+      <div class="wrap">
+        <p class="brand-wordmark">Familieopstellingen</p>
+        <p class="brand-small foot__text">{site.person} · {a.venue} · {a.street} · {a.postal} {a.city}</p>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll('[data-origin]').forEach((e) => (e.textContent = location.origin));
+      const status = (el: Element | null, msg: string) => { if (el) { el.textContent = msg; setTimeout(() => (el.textContent = ''), 2500); } };
+      document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) =>
+        b.addEventListener('click', async () => {
+          const hex = b.dataset.copy!;
+          try { await navigator.clipboard.writeText(hex); } catch {}
+          const label = b.parentElement?.querySelector('.hex');
+          if (label) { label.textContent = 'gekopieerd'; setTimeout(() => (label.textContent = hex), 1500); }
+        }),
+      );
+      const sigBtn = document.querySelector('[data-copy-signature]');
+      const sig = document.querySelector<HTMLElement>('[data-signature]');
+      const sigStatus = document.querySelector('[data-sig-status]');
+      sigBtn?.addEventListener('click', async () => {
+        if (!sig) return;
+        try {
+          const html = sig.innerHTML;
+          await navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([html], { type: 'text/html' }), 'text/plain': new Blob([sig.innerText], { type: 'text/plain' }) })]);
+          status(sigStatus, 'Gekopieerd.');
+        } catch {
+          const r = document.createRange(); r.selectNodeContents(sig);
+          const s = getSelection(); s?.removeAllRanges(); s?.addRange(r);
+          status(sigStatus, 'Geselecteerd: druk nu op Cmd/Ctrl + C.');
+        }
+      });
+    </script>
+  </body>
+</html>
+<style>
+  body { margin: 0; }
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3rem); }
+  .section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+  .brand-title--xl.brand-rule { margin-bottom: 1.5rem; }
+  .cover__img { aspect-ratio: 21 / 9; max-height: 70vh; }
+  .cover__text { padding-top: 2.5rem; padding-bottom: 3rem; }
+  .meta { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin: 2rem 0 0; }
+  .meta dd { margin: 0.3rem 0 0; }
+  .toc { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--brand-line); }
+  .toc a, .meta a { color: var(--brand-ink); }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .story h3 { font-size: 1.35rem; margin: 1.4rem 0 0.3rem; }
+  .story h3:first-child { margin-top: 0; }
+  .story p { margin: 0; }
+  .swatches { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+  .swatch { display: block; width: 100%; aspect-ratio: 3 / 2; border: 1px solid var(--brand-sand-50); padding: 0; cursor: copy; }
+  .swatches p { margin: 0.5rem 0 0; }
+  .swatches .brand-small { margin-top: 0.2rem; font-size: 14px; }
+  .hex { color: var(--brand-ink-soft); }
+  .wordmark-big { font-size: clamp(1.4rem, 3.5vw, 2.4rem); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); }
+  .photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  .photos figure, .posts figure, figure { margin: 0; }
+  figcaption { margin-top: 0.5rem; }
+  .dodont { margin-top: 2.5rem; grid-template-columns: 1fr 1fr; }
+  .dodont ul { padding-left: 1.2rem; margin: 0.6rem 0 0; }
+  .tone { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  .tone th, .tone td { text-align: left; vertical-align: top; padding: 0.8rem 1rem 0.8rem 0; border-bottom: 1px solid var(--brand-sand-50); width: 50%; }
+  .posts { display: grid; grid-template-columns: 1fr 1fr 0.62fr; gap: 1.25rem; align-items: start; margin-top: 2rem; }
+  .post { aspect-ratio: 1; overflow: hidden; position: relative; }
+  .post--paper { background: var(--brand-paper); border: 1px solid var(--brand-line); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8%; }
+  .post--paper .brand-label { margin: 0 0 1rem; font-size: clamp(9px, 1vw, 12px); }
+  .post__title { font-size: clamp(1.4rem, 2.6vw, 2.2rem); margin: 0; }
+  .post__line { font-size: clamp(12px, 1.3vw, 16px); margin: 1rem 0 0; }
+  .post__mark { position: absolute; bottom: 6%; margin: 0; font-size: clamp(8px, 0.9vw, 11px); }
+  .post--photo { display: grid; grid-template-rows: 1fr auto; background: var(--brand-paper); }
+  .post--photo img { height: 100%; min-height: 0; }
+  .post__strip { padding: 5% 7%; background: var(--brand-paper); }
+  .post__strip .brand-label { margin: 0; font-size: clamp(9px, 1vw, 12px); }
+  .post__title--sm { font-size: clamp(1.2rem, 2.2vw, 1.8rem); margin: 0.2rem 0 0; }
+  .post--story { aspect-ratio: 9 / 16; background: var(--brand-paper); display: grid; grid-template-rows: 55% 1fr; }
+  .post__story-img { height: 100%; }
+  .post__story-text { padding: 8%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .post__story-text .post__line { margin: 0; }
+  .post__story-text .brand-btn { font-size: 10px; padding: 0.8em 1.4em; margin-top: auto; }
+  .specs { display: grid; gap: 0.8rem; margin: 2rem 0; }
+  .specs div { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; }
+  .specs dd { margin: 0; }
+  .a4 { aspect-ratio: 210 / 297; background: var(--brand-white); border: 1px solid var(--brand-line); padding: 9%; font-size: 13px; position: relative; }
+  .a4__mark { font-size: 11px; margin: 0 0 2.5rem; }
+  .a4__title { font-size: 1.6rem; margin-bottom: 1.5rem; }
+  .a4__foot { position: absolute; left: 9%; right: 9%; bottom: 5%; margin: 0; font-size: 9px; color: var(--brand-ink-soft); border-top: 1px solid var(--brand-line); padding-top: 0.6rem; }
+  .sig { display: inline-block; margin-top: 1rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .code { background: var(--brand-white); border: 1px solid var(--brand-line); padding: 1rem; overflow-x: auto; font-size: 14px; }
+  code { font-size: 0.92em; }
+  .foot { padding: 3rem 0; }
+  .foot__text { color: var(--brand-ink); }
+  @media (max-width: 860px) {
+    .split, .grid3, .dodont { grid-template-columns: 1fr; }
+    .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .posts { grid-template-columns: 1fr 1fr; }
+    .posts figure:last-child { grid-column: 1 / -1; max-width: 60%; }
+    .photos { grid-template-columns: 1fr; }
+    .specs div { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+</style>

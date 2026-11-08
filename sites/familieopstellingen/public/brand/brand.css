@@ -1,0 +1,130 @@
+/*
+ * brand.css — Familieopstellingen door Jessica Abicht (Embrace Evolve)
+ * Version 1.0 · November 2026 · matches docs/brand/merkgids-familieopstellingen.pdf
+ *
+ * Standalone: link it from any HTML page, email template, slide or document tool
+ *   <link rel="stylesheet" href="https://familieopstellingen.gertembrechts.workers.dev/brand/brand.css">
+ * Fonts load from Google Fonts. No gradients, no shadows, no rounded corners.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Jost:wght@400;500;600&display=swap');
+
+:root {
+  /* Colours */
+  --brand-paper: #f7f3ef;     /* page background, never pure white as base */
+  --brand-white: #ffffff;     /* form fields, alternating blocks */
+  --brand-sand: #b69984;      /* main colour: large areas, footer, frames */
+  --brand-sand-25: #ede5e0;   /* soft bands between sections */
+  --brand-sand-50: #dacbbf;   /* lines on sand */
+  --brand-clay: #a26d57;      /* accent: buttons, link hover. Sparingly */
+  --brand-moss: #549183;      /* tiny accent: focus ring, one marker */
+  --brand-ink: #141210;       /* text, never pure black */
+  --brand-ink-soft: #5e5752;  /* captions, second text level */
+  --brand-line: #e6ddd6;      /* hairlines */
+
+  /* Fonts */
+  --brand-font-title: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --brand-font-body: 'Jost', 'Futura', 'Century Gothic', Arial, sans-serif;
+}
+
+/* Base */
+.brand, .brand body { background: var(--brand-paper); color: var(--brand-ink); }
+.brand {
+  font-family: var(--brand-font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.brand p { max-width: 44rem; }
+
+/* Titles: Cormorant Garamond 500, never bold, never coloured */
+.brand-title, .brand h1, .brand h2, .brand h3 {
+  font-family: var(--brand-font-title);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--brand-ink);
+  margin: 0 0 0.5em;
+}
+.brand-title--xl { font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem); } /* 36–52px */
+.brand-title--sm { font-size: 1.75rem; }
+
+/* Title with a 14mm ink hairline underneath */
+.brand-rule::after {
+  content: '';
+  display: block;
+  width: 14mm;
+  height: 1px;
+  margin-top: 0.45em;
+  background: var(--brand-ink);
+}
+.brand-rule--center { text-align: center; }
+.brand-rule--center::after { margin-left: auto; margin-right: auto; }
+
+/* Wordmark: Cormorant Garamond, uppercase, 0.22em */
+.brand-wordmark {
+  font-family: var(--brand-font-title);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brand-ink);
+}
+
+/* Labels: Jost 600, uppercase, 0.14em */
+.brand-label {
+  font-family: var(--brand-font-body);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--brand-ink);
+}
+.brand-label--clay { color: var(--brand-clay); }
+
+.brand-small, .brand-caption { font-size: 15px; color: var(--brand-ink-soft); }
+
+/* Quote */
+.brand-quote { font-family: var(--brand-font-title); font-weight: 500; font-size: 1.6rem; line-height: 1.25; margin: 0; }
+.brand-quote cite { display: block; margin-top: 0.6rem; font-family: var(--brand-font-body); font-style: normal; font-weight: 600; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-ink-soft); }
+
+/* Buttons: rectangular, thin frame, uppercase. Clay fill only for the one main action */
+.brand-btn {
+  display: inline-block;
+  padding: 0.95em 1.9em;
+  border: 0.3mm solid var(--brand-ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand-ink);
+  font-family: var(--brand-font-body);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.brand-btn--solid { background: var(--brand-clay); border-color: var(--brand-clay); color: var(--brand-white); }
+.brand-link { font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--brand-ink); text-decoration: none; }
+.brand-link::after { content: ' →'; }
+.brand a:hover, .brand-link:hover { color: var(--brand-clay); }
+.brand-btn--solid:hover { color: var(--brand-white); background: var(--brand-ink); border-color: var(--brand-ink); }
+.brand :focus-visible { outline: 2px solid var(--brand-moss); outline-offset: 3px; }
+
+/* Surfaces */
+.brand-band { background: var(--brand-sand-25); }
+.brand-sand { background: var(--brand-sand); color: var(--brand-ink); }
+.brand-card { background: var(--brand-white); border: 1px solid var(--brand-line); padding: 1.5rem; }
+.brand-hairline { border: 0; border-top: 1px solid var(--brand-line); }
+
+/* Photos: cropped tight, no rounded corners, no shadows */
+.brand-photo { display: block; width: 100%; object-fit: cover; border-radius: 0; }
+.brand-photo--4x3 { aspect-ratio: 4 / 3; }
+.brand-photo--3x4 { aspect-ratio: 3 / 4; }
+.brand-photo--21x9 { aspect-ratio: 21 / 9; }
+
+/* Print / documents: Jost 10–11pt, titles 20–36pt */
+@media print {
+  .brand { font-size: 10.5pt; background: var(--brand-white); }
+  .brand-title--xl { font-size: 28pt; }
+  .brand-title--sm { font-size: 18pt; }
+}

@@ -16,6 +16,8 @@ Part of Embrace Evolve. Dutch first, English at `/en/`.
 ## Brand (full guide: `docs/brand/merkgids-familieopstellingen.pdf`)
 
 Follow the brand guide for every change to the site, and for social media, documents or a next website.
+Hidden brand page (noindex, not linked): `/brand/` (`src/pages/brand/index.astro`), with the standalone
+`public/brand/brand.css` and a PDF copy. Keep both in sync with the guide.
 
 - Colours (already in `sites/familieopstellingen/src/styles/theme.css`): paper `#f7f3ef` (page background,
   never pure white as base), white `#ffffff`, sand `#b69984`, sand 25 `#ede5e0`, sand 50 `#dacbbf`,
